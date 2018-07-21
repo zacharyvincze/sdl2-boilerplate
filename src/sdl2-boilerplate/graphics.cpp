@@ -30,6 +30,7 @@ void Graphics::clear() {
 SDL_Texture* Graphics::loadImage(std::string file) {
 	if (this->sprite_sheets.count(file) == 0) {
 		SDL_Surface* surface = IMG_Load(file.c_str());
+		if (surface == nullptr) printf("Could not load image!\n");
 		this->sprite_sheets[file] = SDL_CreateTextureFromSurface(this->renderer, surface);
 		SDL_FreeSurface(surface);
 	}
@@ -46,11 +47,22 @@ void Graphics::render(SDL_Texture *source, SDL_Rect *source_rect, SDL_Rect *dest
 	SDL_RenderCopy(this->renderer, source, source_rect, destination_rect);
 }
 
+void Graphics::rect(SDL_Rect& rect) {
+	SDL_RenderDrawRect(this->renderer, &rect);
+}
+
 void Graphics::present() {
 	SDL_RenderPresent(this->renderer);
 }
 
-void Graphics::pixel(int x, int y, uint8_t r, uint8_t g, uint8_t b) {
-	SDL_SetRenderDrawColor(this->renderer, r, g, b, 1);
+void Graphics::pixel(int x, int y) {
 	SDL_RenderDrawPoint(this->renderer, x, y);
+}
+
+void Graphics::setDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
+	SDL_SetRenderDrawColor(this->renderer, r, g, b, a);
+}
+
+void Graphics::destroyTexture(SDL_Texture* texture) {
+	SDL_DestroyTexture(texture);
 }

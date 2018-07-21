@@ -13,7 +13,12 @@ public:
 
 	void clear();
 	void present();
-	void pixel(int x, int y, uint8_t r, uint8_t g, uint8_t b);
+	void pixel(int x, int y);
+	void rect(SDL_Rect& rect);
+
+	void setDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+
+	void destroyTexture(SDL_Texture* texture);
 
 	SDL_Texture* loadImage(std::string file);
 	void render(SDL_Texture* source, SDL_Rect* source_rect, SDL_Rect* destination_rect);
