@@ -15,6 +15,9 @@ void Input::pollEvents(SDL_Event &e) {
 			case SDL_KEYUP:
 				this->keyUpEvent(e);
 				break;
+			case SDL_MOUSEMOTION:
+				mouseX = e.motion.x;
+				mouseY = e.motion.y;
 			default:
 				break;
 		}
@@ -41,4 +44,12 @@ bool Input::wasKeyHeld(SDL_Scancode key) {
 
 bool Input::wasKeyPressed(SDL_Scancode key) {
 	return this->pressedKeys[key];
+}
+
+int Input::getMouseX() {
+	return mouseX;
+}
+
+int Input::getMouseY() {
+	return mouseY;
 }

@@ -30,7 +30,7 @@ void Graphics::clear() {
 SDL_Texture* Graphics::loadImage(std::string file) {
 	if (this->sprite_sheets.count(file) == 0) {
 		SDL_Surface* surface = IMG_Load(file.c_str());
-		if (surface == nullptr) printf("Could not load image!\n");
+		if (surface == NULL) printf("Could not load image!\n");
 		this->sprite_sheets[file] = SDL_CreateTextureFromSurface(this->renderer, surface);
 		SDL_FreeSurface(surface);
 	}
