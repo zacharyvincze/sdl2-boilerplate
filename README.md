@@ -17,6 +17,8 @@ This SDL2 boilerplate provides a quick way to setup and prototype small SDL2 pro
 - `bool wasKeyHeld(SDL_Scancode key)`: **Checks if a certain was held down**
 - `bool wasKeyReleased(SDL_Scancode key)`: **Checks if a certain key was released**
 - `void beginNewFrame()`: **Resets values stored in the releasedKeys and heldKeys array**
+- `int getMouseX()` **Returns the x position of the mouse cursor on the window**
+- `int getMouseY()` **Returns the y position of the mouse cursor on the window**
 
 #### Graphics
 - Graphics(std::string title, int window_width, int window_height): **Initializes SDL2 and creates both a windows and a renderer with a specified size**
